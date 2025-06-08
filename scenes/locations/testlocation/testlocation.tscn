@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://jpgsc0w80c5l"]
+
+[ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://addons/kenney_prototype_tools/textures/dark/texture_01.png" id="1_3wooq"]
+[ext_resource type="PackedScene" uid="uid://kajon6tgwqho" path="res://scenes/Entity/Player/Player.tscn" id="2_3wooq"]
+[ext_resource type="Texture2D" uid="uid://vuqhcgs6053j" path="res://assets/textures/SkyTexture/kloppenheim_03_puresky_2k.png" id="3_akkd5"]
+[ext_resource type="Texture2D" uid="uid://dhyr4kky7mqfd" path="res://addons/kenney_prototype_tools/textures/orange/texture_01.png" id="8_ge0c6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijbah"]
+albedo_texture = ExtResource("1_3wooq")
+uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hw81n"]
+sky_cover = ExtResource("3_akkd5")
+sky_cover_modulate = Color(0.804743, 0.804743, 0.804743, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+sun_angle_max = 16.67
+sun_curve = 0.764735
+
+[sub_resource type="Sky" id="Sky_3wooq"]
+sky_material = SubResource("ProceduralSkyMaterial_hw81n")
+
+[sub_resource type="Environment" id="Environment_akkd5"]
+background_mode = 2
+sky = SubResource("Sky_3wooq")
+tonemap_mode = 4
+tonemap_exposure = 1.97
+sdfgi_y_scale = 0
+glow_intensity = 0.21
+glow_blend_mode = 1
+fog_enabled = true
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.305
+volumetric_fog_enabled = true
+volumetric_fog_length = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_doocq"]
+albedo_texture = ExtResource("8_ge0c6")
+
+[node name="TestScene" type="Node3D"]
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15146, 0, -3.15318)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(92.9394, 1, 99.4013)
+material = SubResource("StandardMaterial3D_ijbah")
+
+[node name="Player" parent="." instance=ExtResource("2_3wooq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70449, 0.784344, 1.01374)
+collision_mask = 10
+
+[node name="Skeleton3D" parent="Player/Model/Armature_024" index="0"]
+bones/0/position = Vector3(-0.46924, 0.813216, -86.4917)
+bones/0/rotation = Quaternion(-0.608139, -0.26214, 0.338085, 0.668691)
+bones/1/rotation = Quaternion(0.0250473, 0.0262477, -0.0146321, 0.999235)
+bones/2/rotation = Quaternion(0.0303919, 0.0527837, -0.0297526, 0.9977)
+bones/3/rotation = Quaternion(-0.015467, 0.0541357, -0.0274959, 0.998035)
+bones/4/rotation = Quaternion(0.0190199, 0.0884472, -0.038042, 0.995173)
+bones/5/rotation = Quaternion(-0.0248257, 0.185726, -0.0256844, 0.981952)
+bones/7/rotation = Quaternion(-0.526452, -0.467711, 0.520752, -0.48261)
+bones/8/rotation = Quaternion(0.373273, -0.0320114, 0.0597713, 0.925241)
+bones/9/rotation = Quaternion(0.0836589, -0.16333, 0.220613, 0.957943)
+bones/10/rotation = Quaternion(-0.0605853, 0.0283561, 0.0298457, 0.997314)
+bones/12/rotation = Quaternion(0.0381065, -0.0895189, -0.0826565, 0.991818)
+bones/15/rotation = Quaternion(0.0535943, -0.00656726, 0.0413064, 0.997687)
+bones/16/rotation = Quaternion(0.0530256, 0.001242, 0.00223261, 0.99859)
+bones/17/rotation = Quaternion(0.0788496, 0.000768583, 0.00447634, 0.996876)
+bones/19/rotation = Quaternion(0.126743, 0.0113903, -0.042763, 0.990948)
+bones/20/rotation = Quaternion(0.125521, 0.00510633, 0.00868135, 0.99204)
+bones/21/rotation = Quaternion(0.156368, 0.00710636, 0.0111485, 0.98761)
+bones/23/rotation = Quaternion(0.219386, 0.0118818, -0.0712008, 0.972964)
+bones/24/rotation = Quaternion(0.179868, -0.00520576, 0.00663919, 0.983655)
+bones/25/rotation = Quaternion(0.206289, -0.00503031, 0.00836283, 0.978443)
+bones/27/rotation = Quaternion(0.316975, 0.000683871, -0.0438666, 0.947419)
+bones/28/rotation = Quaternion(0.167344, -0.00703924, 0.00412318, 0.985865)
+bones/29/rotation = Quaternion(0.318873, -0.0190001, 0.00785437, 0.947574)
+bones/31/rotation = Quaternion(0.525445, -0.440176, 0.460151, 0.564282)
+bones/32/rotation = Quaternion(0.428758, -0.000761473, 0.281375, 0.858484)
+bones/33/rotation = Quaternion(0.0777002, 0.092131, -0.482188, 0.867738)
+bones/34/rotation = Quaternion(0.0872619, -0.0105997, -0.262676, 0.960872)
+bones/55/rotation = Quaternion(0.389141, 0.368297, 0.829808, -0.156029)
+bones/56/rotation = Quaternion(-0.361542, 0.173066, -0.0385918, 0.915339)
+bones/57/rotation = Quaternion(0.523503, -0.0367188, -0.0446387, 0.850061)
+bones/60/rotation = Quaternion(-0.071018, 0.258959, 0.941719, 0.202638)
+bones/61/rotation = Quaternion(-0.438041, -0.0404005, -0.0436345, 0.896986)
+bones/62/rotation = Quaternion(0.705249, 0.069907, 0.163254, 0.686357)
+bones/63/rotation = Quaternion(0.221848, 0.0393187, 0.0430218, 0.973338)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.602098, 0.581359, -0.547266, 0.0274285, 0.669969, 0.741883, 0.797951, -0.461697, 0.387441, -0.0352859, 3.68096, -0.0254974)
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_akkd5")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Meshes"]
+transform = Transform3D(0.831052, -0.239798, -0.501846, 0, 0.902285, -0.431141, 0.556194, 0.358301, 0.749846, -2.32291, 0.989343, -13.288)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(1, 1, 7.32935)
+material = SubResource("StandardMaterial3D_doocq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Meshes"]
+transform = Transform3D(-0.260984, 0.499216, -0.826239, -0.0418904, 0.849239, 0.526345, 0.964434, 0.171978, -0.200725, 2.26057, 1.00341, -15.6096)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(1, 1, 7.32935)
+material = SubResource("StandardMaterial3D_doocq")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10748, 1.00573, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Test1"
+
+[editable path="Player"]
+[editable path="Player/Model/WeaponManager"]

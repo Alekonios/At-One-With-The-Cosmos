@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dge8l4bqx1hk"]
+
+[ext_resource type="PackedScene" uid="uid://kajon6tgwqho" path="res://scenes/Entity/Player/Player.tscn" id="1_qp208"]
+[ext_resource type="PackedScene" uid="uid://bjew5imryu20d" path="res://assets/load-assets/Station - Bridge/Bridge_0.glb" id="2_vmi5k"]
+[ext_resource type="PackedScene" uid="uid://bmq48exkkokgv" path="res://assets/load-assets/Station - Bridge/Bridge_Collision.glb" id="3_l3da0"]
+[ext_resource type="PackedScene" uid="uid://dwu5xx0s7pdtv" path="res://components/SceneLoader/scene_loader.tscn" id="4_4ucwj"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2uqmw"]
+data = PackedVector3Array(-1.0002, -0.627, 0.6487, -1.0002, 1, -0.6487, -1.0002, -0.627, -0.6487, -1.0002, -0.627, 0.6487, -1.0002, 1, 0.6487, -1.0002, 1, -0.6487, -1.0002, -0.627, -0.6487, 12.5603, 1, -0.6487, 12.5603, -0.627, -0.6487, -1.0002, -0.627, -0.6487, -1.0002, 1, -0.6487, 12.5603, 1, -0.6487, 12.5603, -0.627, -0.6487, 12.5603, 1, 0.6487, 12.5603, -0.627, 0.6487, 12.5603, -0.627, -0.6487, 12.5603, 1, -0.6487, 12.5603, 1, 0.6487, 12.5603, -0.627, 0.6487, -1.0002, 1, 0.6487, -1.0002, -0.627, 0.6487, 12.5603, -0.627, 0.6487, 12.5603, 1, 0.6487, -1.0002, 1, 0.6487, -1.0002, -0.627, -0.6487, 12.5603, -0.627, 0.6487, -1.0002, -0.627, 0.6487, -1.0002, -0.627, -0.6487, 12.5603, -0.627, -0.6487, 12.5603, -0.627, 0.6487, -1.0746, -0.7014, 0.7232, -1.0912, 1, -0.7399, -1.0912, 1, 0.7399, -1.0746, -0.7014, 0.7232, -1.0746, -0.7014, -0.7232, -1.0912, 1, -0.7399, -1.0746, -0.7014, -0.7232, 12.6515, 1, -0.7399, -1.0912, 1, -0.7399, -1.0746, -0.7014, -0.7232, 12.6348, -0.7014, -0.7232, 12.6515, 1, -0.7399, 12.6348, -0.7014, -0.7232, 12.6515, 1, 0.7399, 12.6515, 1, -0.7399, 12.6348, -0.7014, -0.7232, 12.6348, -0.7014, 0.7232, 12.6515, 1, 0.7399, 12.6348, -0.7014, 0.7232, -1.0912, 1, 0.7399, 12.6515, 1, 0.7399, 12.6348, -0.7014, 0.7232, -1.0746, -0.7014, 0.7232, -1.0912, 1, 0.7399, -1.0746, -0.7014, -0.7232, 12.6348, -0.7014, 0.7232, 12.6348, -0.7014, -0.7232, -1.0746, -0.7014, -0.7232, -1.0746, -0.7014, 0.7232, 12.6348, -0.7014, 0.7232, 12.5603, 1, -0.6487, 12.6515, 1, 0.7399, 12.5603, 1, 0.6487, 12.5603, 1, 0.6487, 12.6515, 1, 0.7399, -1.0912, 1, 0.7399, 12.5603, 1, 0.6487, -1.0912, 1, 0.7399, -1.0002, 1, 0.6487, 12.5603, 1, -0.6487, 12.6515, 1, -0.7399, 12.6515, 1, 0.7399, -1.0002, 1, -0.6487, 12.6515, 1, -0.7399, 12.5603, 1, -0.6487, -1.0002, 1, -0.6487, -1.0912, 1, -0.7399, 12.6515, 1, -0.7399, -1.0002, 1, 0.6487, -1.0912, 1, -0.7399, -1.0002, 1, -0.6487, -1.0002, 1, 0.6487, -1.0912, 1, 0.7399, -1.0912, 1, -0.7399)
+
+[node name="Station-Bridge" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_qp208")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.9817, 1.30507, 0)
+
+[node name="BridgeCamera" type="Camera3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(0.25, 0, 0, 0, 0.248195, 0.0299909, 0, -0.0299909, 0.248195, 0, 3.82517, 5.84611)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.920293, -0.391229, 0, 0.391229, 0.920293, 0, 0, 0)
+light_color = Color(0.82606, 0.82606, 0.82606, 1)
+light_energy = 0.481
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_blur = 10.0
+directional_shadow_max_distance = 645.1
+directional_shadow_pancake_size = 0.8
+
+[node name="Bridge_0" parent="." instance=ExtResource("2_vmi5k")]
+
+[node name="Bridge_Collision" parent="Bridge_0" instance=ExtResource("3_l3da0")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bridge_0/Bridge_Collision/Station_Tube_Сollision" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge_0/Bridge_Collision/Station_Tube_Сollision/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2uqmw")
+
+[node name="SceneLoader" parent="." instance=ExtResource("4_4ucwj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.3797, 6.60147, -0.700481)
+
+[editable path="Bridge_0/Bridge_Collision"]

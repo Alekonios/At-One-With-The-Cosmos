@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhay0jllokjfy"]
+
+[ext_resource type="Script" uid="uid://b3hg4wvk14j0" path="res://components/GunComponent/Gun.gd" id="1_c1ul1"]
+
+[node name="Air" type="Node3D"]
+script = ExtResource("1_c1ul1")
+WeaponName = "Air"
+StartGun = true
