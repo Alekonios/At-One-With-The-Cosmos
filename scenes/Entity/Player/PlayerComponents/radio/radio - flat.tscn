@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://ymgml6stk6vf"]
+
+[ext_resource type="Script" uid="uid://bb1oyhl2lhjqa" path="res://scenes/Entity/Player/PlayerComponents/radio/radio - flat.gd" id="1_p25wg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p25wg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c66dc"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_kffix"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4u0f"]
+shading_mode = 0
+albedo_color = Color(0.751685, 0.303362, 0.263497, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c66dc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kffix"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c66dc"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.7
+
+[node name="Radio - Flat" type="Node3D"]
+script = ExtResource("1_p25wg")
+
+[node name="L" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 3, 0, 0, 0, 0.2, -5.00021, 0.0079205, 0.0022459)
+mesh = SubResource("BoxMesh_p25wg")
+surface_material_override/0 = SubResource("StandardMaterial3D_c66dc")
+
+[node name="M" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0.409667, 0)
+mesh = SubResource("BoxMesh_kffix")
+surface_material_override/0 = SubResource("StandardMaterial3D_s4u0f")
+
+[node name="R" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 3, 0, 0, 0, 0.2, 5, 0, 0)
+mesh = SubResource("BoxMesh_c66dc")
+surface_material_override/0 = SubResource("StandardMaterial3D_kffix")
+
+[node name="Frequency Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00002, 2.00579, -0.00145912)
+billboard = 1
+font_size = 256
+
+[node name="Node3D" type="Node3D" parent="."]
+visible = false
+
+[node name="tick mark -2" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark -1" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark  0" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark +1" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark +2" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")

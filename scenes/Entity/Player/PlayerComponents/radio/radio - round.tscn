@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkacjuaikks3e"]
+
+[ext_resource type="Script" uid="uid://dstk10bmp7vgm" path="res://scenes/Entity/Player/PlayerComponents/radio/radio - round.gd" id="1_c66dc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c66dc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c66dc"]
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_kffix"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4u0f"]
+shading_mode = 0
+albedo_color = Color(0.751685, 0.303362, 0.263497, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kffix"]
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c66dc"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.7
+
+[node name="Radio - Round" type="Node3D"]
+script = ExtResource("1_c66dc")
+
+[node name="L" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.140954, -1.02606, 0, 0.051303, 2.81908, 0, 0, 0, 0.2, -2.00021, 0.0079205, 0.0022459)
+mesh = SubResource("BoxMesh_c66dc")
+surface_material_override/0 = SubResource("StandardMaterial3D_c66dc")
+
+[node name="M" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0.409667, 0)
+mesh = SubResource("BoxMesh_kffix")
+surface_material_override/0 = SubResource("StandardMaterial3D_s4u0f")
+
+[node name="R" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.140954, 1.02606, 0, -0.051303, 2.81908, 0, 0, 0, 0.2, 2, 0, 0)
+mesh = SubResource("BoxMesh_c66dc")
+surface_material_override/0 = SubResource("StandardMaterial3D_kffix")
+
+[node name="Label3D" type="Label3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="tick mark -2" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark -1" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark  0" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark +1" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
+
+[node name="tick mark +2" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("CylinderMesh_c66dc")
+skeleton = NodePath("../..")
