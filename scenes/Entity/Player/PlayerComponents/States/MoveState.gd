@@ -2,6 +2,7 @@ extends State
 
 @onready var Animator = %AnimationTree
 
+@export var _WeaponManager : WeaponManager
 @export var FloorCheckCollider : RayCast3D
 @export var Model : Node3D
 @export var DebugMoveVis : Node3D
@@ -9,7 +10,7 @@ extends State
 var AnimName = "Walk"
 
 func Enter(Argument):
-	pass
+	Animator.set("parameters/list/transition_request", "BasicMovement")
 	
 func Update(delta):
 	if !FloorCheckCollider.is_colliding() and !_Player.is_on_floor():
@@ -43,6 +44,8 @@ func _physics_process(delta: float) -> void:
 				_StateMachine.ChangeState(self, "Jump", Direction )
 	if Input.is_action_pressed("Crouch"):
 		_StateMachine.ChangeState(self, "CrouchIdle", null)
+	if _WeaponManager.Weapon and _WeaponManager.Weapon.WantChangeState:
+		_StateMachine.ChangeState(self, _WeaponManager.Weapon.StateName, null)
 	
 func Exit(Argument):
 	pass

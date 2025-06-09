@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjlhq2b51n3gk"]
+
+[ext_resource type="Script" uid="uid://b3hg4wvk14j0" path="res://components/GunComponent/Gun.gd" id="1_6o0sk"]
+[ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="1_vxddw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4g86e"]
+material = ExtResource("1_vxddw")
+height = 4.97
+
+[node name="Armature" type="Node3D"]
+script = ExtResource("1_6o0sk")
+WeaponName = "Armature"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0595955, 0, 0, 0, -0.127444, 5.21e-09, 0, -1.11415e-08, -0.0595955, 0.00193055, 0.0567722, -0.000715971)
+mesh = SubResource("CylinderMesh_4g86e")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0595955, 0, 0, 0, -0.0284697, 0.0281252, 0, -0.0152398, -0.0525412, 0.00193055, 0.412123, 0.025412)
+mesh = SubResource("CylinderMesh_4g86e")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0595955, 0, 0, 0, 0.00068811, 0.0595818, 0, -0.0322847, 0.00126991, 0.00193055, 0.462135, 0.118691)
+mesh = SubResource("CylinderMesh_4g86e")

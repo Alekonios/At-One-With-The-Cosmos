@@ -4,6 +4,8 @@ extends Node3D
 
 @export var WeaponName: String
 @export var StartGun : bool
+@export var WantChangeState : bool
+@export var StateName : String
 
 @export_category("Ammo")
 @export var MaxAmmo: int
@@ -19,5 +21,9 @@ extends Node3D
 @export var Muzzle: Marker3D
 
 @export_category("Load Nodes")
+@export var DetectMarker : Marker3D
 @export var Animator: AnimationPlayer
 @export var Cast_weapon: PackedScene
+
+
+	

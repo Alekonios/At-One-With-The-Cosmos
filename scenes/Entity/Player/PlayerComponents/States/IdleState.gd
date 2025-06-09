@@ -1,13 +1,12 @@
 extends State
 
-
-@export var CheckWallCollider : RayCast3D
-@export var CheckAirWallCollider : RayCast3D
 @export var FloorCheckCollider : RayCast3D
+@export var _WeaponManager : WeaponManager
 
 @onready var Animator = %AnimationTree
 
 func Enter(Argument):
+	Animator.set("parameters/list/transition_request", "BasicMovement")
 	%NormalCollision.disabled = false
 	%CrouchCollision.disabled = true
 	
@@ -24,7 +23,8 @@ func Update(delta):
 		_StateMachine.ChangeState(self, "Fall", null)
 	if Input.is_action_pressed("Crouch"):
 		_StateMachine.ChangeState(self, "CrouchIdle", null)
-
+	if _WeaponManager.Weapon and _WeaponManager.Weapon.WantChangeState:
+		_StateMachine.ChangeState(self, _WeaponManager.Weapon.StateName, null)
 		
 func Exit(Argument):
 	pass

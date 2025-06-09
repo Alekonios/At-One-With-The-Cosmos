@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3wfrml4w0xw6"]
+[gd_scene load_steps=5 format=3 uid="uid://3wfrml4w0xw6"]
 
 [ext_resource type="Script" uid="uid://70hke82luifd" path="res://scenes/Entity/Player/PlayerComponents/WeaponManager.gd" id="1_uw2o2"]
 [ext_resource type="PackedScene" uid="uid://cqyhfjy01x2ua" path="res://scenes/Weapons/pistol.tscn" id="2_7h1kv"]
 [ext_resource type="PackedScene" uid="uid://dhay0jllokjfy" path="res://scenes/Weapons/Air.tscn" id="2_80jnh"]
+[ext_resource type="PackedScene" uid="uid://cjlhq2b51n3gk" path="res://scenes/Weapons/Armature.tscn" id="4_usnu5"]
 
 [node name="WeaponManager" type="Node3D"]
 script = ExtResource("1_uw2o2")
@@ -17,3 +18,5 @@ hit_from_inside = true
 [node name="Air" parent="WeaponList" instance=ExtResource("2_80jnh")]
 
 [node name="Pistol" parent="WeaponList" instance=ExtResource("2_7h1kv")]
+
+[node name="Armature" parent="WeaponList" instance=ExtResource("4_usnu5")]

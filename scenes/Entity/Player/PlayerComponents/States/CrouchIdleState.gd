@@ -6,13 +6,13 @@ extends State
 
 
 func Enter(Argument):
+	Animator.set("parameters/list/transition_request", "CrouchMovement")
 	%NormalCollision.disabled = true
 	%CrouchCollision.disabled = false
 	
 func Update(delta):
 	_Player.velocity.x = lerp(_Player.velocity.x, 0.0, 0.2)
 	_Player.velocity.z = lerp(_Player.velocity.z, 0.0, 0.2)
-	Animator.set("parameters/list/transition_request", "CrouchMovement")
 	Animator.set("parameters/Crouch/transition_request", "CrouchIdle")
 	var InputDir = Input.get_vector("MoveUp", "MoveDown", "MoveLeft", "MoveRight")
 	if InputDir.normalized():

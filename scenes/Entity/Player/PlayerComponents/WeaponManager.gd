@@ -16,16 +16,21 @@ enum States { CHANGE, IDLE, SHOOT, RELOAD }
 @export var IsShoot: bool = false
 
 
+var Weapon
+
 var WeaponList : Array = []
 var OpenWeapons = []
 
 var LastWeapon : int = 0
 var CurrentWeapon: int = 0
+var Detect = false
 var WantShoot = false
 var Damage
 
 func _process(delta: float) -> void:
 	%Label.text = str(OpenWeapons[CurrentWeapon])
+	if Detect:
+		OpenWeapons[CurrentWeapon].global_transform = OpenWeapons[CurrentWeapon].DetectMarker.global_transform
 	
 func _ready() -> void:
 	IsShoot = false
@@ -53,8 +58,14 @@ func _input(event: InputEvent) -> void:
 			LastWeapon = CurrentWeapon
 			CurrentWeapon -= 1
 			ChangeWeapon()
+	
 			
 func ChangeWeapon():
 	if CurrentWeapon != LastWeapon:
+		Weapon = OpenWeapons[CurrentWeapon]
 		OpenWeapons[LastWeapon].hide()
-		OpenWeapons[CurrentWeapon].show()
+		Weapon.show()
+		if Weapon.DetectMarker:
+			Detect = true
+		else:
+			Detect = false
