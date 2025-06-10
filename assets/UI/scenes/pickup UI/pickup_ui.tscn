@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwinm3j4cx6ub"]
+
+[ext_resource type="Script" uid="uid://bbn530jf3xfwa" path="res://assets/UI/scripts/pickup UI/pickup_ui.gd" id="1_vf7b4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gaeio"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_wod53"]
+font_size = 28
+
+[node name="pickup_ui" type="CanvasLayer"]
+script = ExtResource("1_vf7b4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_gaeio")
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "placeholder "
+label_settings = SubResource("LabelSettings_wod53")

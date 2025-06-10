@@ -2,6 +2,7 @@
 class_name RadioFlat
 extends Node3D
 
+@onready var anim_player: AnimationPlayer = $"Compas (2)/AnimationPlayer"
 @onready var l: MeshInstance3D = $L
 @onready var r: MeshInstance3D = $R
 
@@ -15,6 +16,8 @@ extends Node3D
 @export var player: Player
 @export var camera: Camera3D
 @export var scroll_speed: float = 4
+
+var radio_equiped: bool = false
 
 var offset: float = 0
 var freq: float
@@ -44,10 +47,16 @@ func update_freq_label():
 	freq_label.text = ("%.2f kHz" % freq)
 
 func radio_equip():
-	if Input.is_action_pressed("TAB"):
+	if Input.is_action_pressed("Tab") and !radio_equiped:
 		self.visible = true
-	else:
+		radio_equiped = true
+		anim_player.play("Compas_Action")
+	elif !Input.is_action_pressed("Tab") and radio_equiped:
+		anim_player.play("Compas_Action_1")
+		await anim_player.animation_finished
 		self.visible = false
+		radio_equiped = false
+
 
 func offset_needle(delta):
 	offset = Input.get_axis("ui_left", "ui_right") * scroll_speed * delta
