@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c11mcb5o3picb"]
+
+[ext_resource type="Script" uid="uid://dfq0wbtiwpvlg" path="res://scenes/UI/dialogue trigger/dialogue_trigger.gd" id="1_n64sx"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_n64sx")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

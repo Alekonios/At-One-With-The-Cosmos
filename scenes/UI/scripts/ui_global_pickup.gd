@@ -1,6 +1,6 @@
 extends Node
 
-var ui_packed_scene: PackedScene = preload("res://assets/UI/scenes/pickup UI/pickup_ui.tscn")
+var ui_packed_scene: PackedScene = preload("res://scenes/UI/UI scenes/pickup_ui.tscn")
 
 var was_picked: bool = false
 var ui_seen: bool = false

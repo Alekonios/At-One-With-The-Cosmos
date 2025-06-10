@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwinm3j4cx6ub"]
 
-[ext_resource type="Script" uid="uid://bbn530jf3xfwa" path="res://assets/UI/scripts/pickup UI/pickup_ui.gd" id="1_vf7b4"]
+[ext_resource type="Script" uid="uid://bbn530jf3xfwa" path="res://scenes/UI/scripts/pickup_ui.gd" id="1_m5qel"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gaeio"]
 font_size = 48
@@ -85,7 +85,7 @@ _data = {
 }
 
 [node name="pickup_ui" type="CanvasLayer"]
-script = ExtResource("1_vf7b4")
+script = ExtResource("1_m5qel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

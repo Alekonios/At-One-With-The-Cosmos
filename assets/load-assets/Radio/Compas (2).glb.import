@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dpabc3jb6742i"
-path="res://.godot/imported/Compas (2).glb-199e7c1a73fe9f61b35b2667f8571a9d.scn"
+path="res://.godot/imported/Compas (2).glb-adc78dd01ced7797a9154999e2d55c4e.scn"
 
 [deps]
 
-source_file="res://scenes/Entity/Player/PlayerComponents/radio/Compas (2).glb"
-dest_files=["res://.godot/imported/Compas (2).glb-199e7c1a73fe9f61b35b2667f8571a9d.scn"]
+source_file="res://assets/load-assets/Radio/Compas (2).glb"
+dest_files=["res://.godot/imported/Compas (2).glb-adc78dd01ced7797a9154999e2d55c4e.scn"]
 
 [params]
 

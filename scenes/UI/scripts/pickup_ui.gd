@@ -4,8 +4,8 @@ extends CanvasLayer
 
 #shares data to _ready()
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var item_name: Label = $MarginContainer/HBoxContainer/MarginContainer/Label
-@onready var item_info: Label = $MarginContainer/HBoxContainer/MarginContainer2/Label
+@onready var item_name: Label = $"MarginContainer/HBoxContainer/MarginContainer/Item Info"
+@onready var item_info: Label = $"MarginContainer/HBoxContainer/MarginContainer2/Item Name"
 
 func _ready() -> void:
 	#shares data to UiGlobalPickup
