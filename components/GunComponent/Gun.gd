@@ -2,10 +2,14 @@ class_name Gun
 
 extends Node3D
 
+var weapon_data: Dictionary
+
 @export var WeaponName: String
 @export var StartGun : bool
 @export var WantChangeState : bool
 @export var StateName : String
+@export var description: Array
+
 
 @export_category("Ammo")
 @export var MaxAmmo: int
@@ -26,4 +30,12 @@ extends Node3D
 @export var Cast_weapon: PackedScene
 
 
-	
+func _ready() -> void:
+	weapon_data = {
+		"description": description,
+		"weapon": WeaponName,
+		"damage": Damage,
+		"mag. size": MaxAmmo
+	}
+
+	print(weapon_data)

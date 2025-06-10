@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://ssomk7rapngk"]
+
+[ext_resource type="PackedScene" uid="uid://tbqf3f3did8v" path="res://assets/load-assets/REMOVE LATER/floor - 1/Textures_Test.glb" id="1_vv7r0"]
+
+[sub_resource type="Environment" id="Environment_aq2qj"]
+background_mode = 2
+glow_enabled = true
+glow_strength = 2.0
+glow_bloom = 0.45
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aq2qj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.117312, -0.993095, 0, 0.993095, 0.117312, 0, 0, 0)
+shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.00942471, 0.999956, 0, -0.999956, -0.00942471, 0, 4.03791, -5.89411)
+light_color = Color(0.259629, 0.306487, 0.311704, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 11.28
+spot_attenuation = 1.79
+spot_angle = 71.55
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.00942471, 0.999956, 0, -0.999956, -0.00942471, 0, 5.59765, -4.24943)
+light_color = Color(0.259629, 0.306487, 0.311704, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 11.28
+spot_attenuation = 1.79
+spot_angle = 71.55
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.00942471, 0.999956, 0, -0.999956, -0.00942471, 2.87027, 4.57718, -4.37585)
+light_color = Color(0.259629, 0.306487, 0.311704, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 11.28
+spot_attenuation = 1.79
+spot_angle = 71.55
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.00942471, 0.999956, 0, -0.999956, -0.00942471, -3.20769, 4.57718, -4.37585)
+light_color = Color(0.259629, 0.306487, 0.311704, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 11.28
+spot_attenuation = 1.79
+spot_angle = 71.55
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.00942471, 0.999956, 0, -0.999956, -0.00942471, -3.20769, 4.57718, 4.19673)
+light_color = Color(0.259629, 0.306487, 0.311704, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 11.28
+spot_attenuation = 1.79
+spot_angle = 71.55
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.00942471, 0.999956, 0, -0.999956, -0.00942471, 3.34935, 4.57718, 4.19673)
+light_color = Color(0.259629, 0.306487, 0.311704, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 11.28
+spot_attenuation = 1.79
+spot_angle = 71.55
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.777464, 0.628927, 0, -0.628927, 0.777464, 0.013051, 8.77262, 6.358)
+projection = 1
+size = 10.305
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.449412, 0.893324, 0, -0.893324, 0.449412, 0, 14.0258, 5.44678)
+projection = 1
+size = 11.57
+
+[node name="Textures_Test" parent="." instance=ExtResource("1_vv7r0")]

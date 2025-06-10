@@ -101,6 +101,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105817, -0.031452, 0)
 script = ExtResource("1_3ku6i")
 WeaponName = "Pistol"
+description = ["simple gun", "", ""]
 
 [node name="Interactive" type="Node3D" parent="."]
 

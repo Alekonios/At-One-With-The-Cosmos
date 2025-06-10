@@ -2,7 +2,16 @@
 class_name PickupUI
 extends CanvasLayer
 
+#shares data to _ready()
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var item_name: Label = $MarginContainer/HBoxContainer/MarginContainer/Label
+@onready var item_info: Label = $MarginContainer/HBoxContainer/MarginContainer2/Label
 
 func _ready() -> void:
-	UiGlobalPickup.pickup_ui = self
+	#shares data to UiGlobalPickup
+	UiGlobalPickup.ui_item_name = item_name
+	UiGlobalPickup.ui_item_info = item_info
+	UiGlobalPickup.ui_animation = anim_player
+	UiGlobalPickup.ui_visual = self
+	#hides UI on load
 	self.visible = false
