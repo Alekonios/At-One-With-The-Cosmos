@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ssomk7rapngk"]
+[gd_scene load_steps=5 format=3 uid="uid://ssomk7rapngk"]
 
 [ext_resource type="PackedScene" uid="uid://tbqf3f3did8v" path="res://assets/load-assets/REMOVE LATER/floor - 1/Textures_Test.glb" id="1_vv7r0"]
+[ext_resource type="PackedScene" uid="uid://kajon6tgwqho" path="res://scenes/Entity/Player/Player.tscn" id="2_n6wco"]
 
 [sub_resource type="Environment" id="Environment_aq2qj"]
 background_mode = 2
+tonemap_mode = 4
+tonemap_exposure = 7.4
 glow_enabled = true
 glow_strength = 2.0
 glow_bloom = 0.45
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8lqx"]
+size = Vector3(20.8662, 1, 31.5345)
 
 [node name="Node3D" type="Node3D"]
 
@@ -71,14 +77,15 @@ spot_range = 11.28
 spot_attenuation = 1.79
 spot_angle = 71.55
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.777464, 0.628927, 0, -0.628927, 0.777464, 0.013051, 8.77262, 6.358)
-projection = 1
-size = 10.305
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.449412, 0.893324, 0, -0.893324, 0.449412, 0, 14.0258, 5.44678)
-projection = 1
-size = 11.57
-
 [node name="Textures_Test" parent="." instance=ExtResource("1_vv7r0")]
+
+[node name="Player" parent="." instance=ExtResource("2_n6wco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.630978, 0, 0.735436)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216309, -0.507086, 6.73358)
+shape = SubResource("BoxShape3D_u8lqx")

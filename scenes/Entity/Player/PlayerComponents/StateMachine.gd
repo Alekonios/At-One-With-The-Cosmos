@@ -12,6 +12,8 @@ extends Node
 
 var States : Dictionary = {}
 
+var PastState
+
 func _ready() -> void:
 	for Child in get_children():
 		if Child is State:
@@ -30,6 +32,7 @@ func _process(delta: float) -> void:
 func ChangeState(SourseState : State, NewState : String, Argument):
 	if SourseState.name.to_lower() == NewState.to_lower() and NewState == null:
 		return
+	PastState = SourseState
 	CurrentState = States.get(NewState.to_lower())
 	ExitState(SourseState)
 	CurrentState.Enter(Argument)

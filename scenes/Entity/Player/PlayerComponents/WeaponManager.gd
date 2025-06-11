@@ -56,6 +56,9 @@ func _input(event: InputEvent) -> void:
 			LastWeapon = CurrentWeapon
 			CurrentWeapon -= 1
 			ChangeWeapon()
+	if Input.is_action_just_pressed("Attack"):
+		if Weapon and Weapon.AttackStateName and !_StateMachine.CurrentState.AttackState:
+			_StateMachine.ChangeState(_StateMachine.CurrentState, Weapon.AttackStateName, Weapon.Length)
 	
 			
 func ChangeWeapon():

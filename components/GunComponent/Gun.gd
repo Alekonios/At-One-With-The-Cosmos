@@ -8,6 +8,7 @@ var weapon_data: Dictionary
 @export var StartGun : bool
 @export var WantChangeState : bool
 @export var StateName : String
+@export var AttackStateName : String
 @export var description: Array
 
 

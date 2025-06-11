@@ -6,6 +6,7 @@ extends Node
 @export var _StateMachine : StateMachine
 @export var StateName : String
 @export var _Player : Player
+@export var AttackState : bool = false
 
 func Enter(Argument):
 	pass

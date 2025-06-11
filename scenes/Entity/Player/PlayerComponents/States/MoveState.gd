@@ -44,8 +44,6 @@ func _physics_process(delta: float) -> void:
 				_StateMachine.ChangeState(self, "Jump", Direction )
 	if Input.is_action_pressed("Crouch"):
 		_StateMachine.ChangeState(self, "CrouchIdle", null)
-	if _WeaponManager.Weapon and _WeaponManager.Weapon.WantChangeState:
-		_StateMachine.ChangeState(self, _WeaponManager.Weapon.StateName, null)
 	
 func Exit(Argument):
 	pass
