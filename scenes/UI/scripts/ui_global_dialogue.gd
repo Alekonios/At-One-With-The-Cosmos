@@ -12,7 +12,7 @@ var ui_speaker_line: Label
 var current_dialogue: DialogueResource
 var current_line: int = 0
 
-var dialogue_closed: bool = false
+var dialogue_closing: bool = false
 
 
 func _ready() -> void:
@@ -21,11 +21,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	change_line()
-	print(DialogueResource)
+
 
 func open_dialogue():
 	if DialogueResource != null:
-		dialogue_closed = false
+		dialogue_closing = false
 		ui_visual.visible = true
 		ui_animation.play("slide_in")
 		await ui_animation.animation_finished
@@ -34,16 +34,16 @@ func open_dialogue():
 		ui_speaker_line.text = current_dialogue.speaker_lines[0]
 
 func close_dialogue():
+	dialogue_closing = true
 	ui_animation.play("slide_out")
 	await ui_animation.animation_finished
 	ui_visual.visible = false
 	
 	ui_animation.play("slide_reset")
-	dialogue_closed = true
 	current_line = 0
 
 func change_line():
-		if current_dialogue != null:
+		if current_dialogue != null and dialogue_closing == false:
 			if Input.is_action_just_pressed("ui_down"):
 				current_line += 1
 				ui_animation.play("text_animation")
