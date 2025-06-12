@@ -38,5 +38,3 @@ func _ready() -> void:
 		"damage": Damage,
 		"mag. size": MaxAmmo
 	}
-
-	print(weapon_data)

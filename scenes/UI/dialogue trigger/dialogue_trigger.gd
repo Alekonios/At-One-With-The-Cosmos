@@ -17,6 +17,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			trigger_dialogue()
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	UiGlobalDialogue.current_dialogue = null
+	if UiGlobalDialogue.dialogue_closed == true:
+		UiGlobalDialogue.current_dialogue = null
 	if body is Player:
 		UiGlobalDialogue.close_dialogue()
