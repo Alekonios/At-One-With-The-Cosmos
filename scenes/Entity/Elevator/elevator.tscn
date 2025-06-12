@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckx4nx8fn4ba2"]
+
+[ext_resource type="Script" uid="uid://ba76a3eyoyaij" path="res://scenes/Entity/test-elevator.gd" id="1_wllg3"]
+[ext_resource type="PackedScene" uid="uid://br2mb2d6w1xej" path="res://scenes/Elevator/elevator_inside.tscn" id="2_lf2k1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gjln1"]
+size = Vector3(2.5, 3.5, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wllg3"]
+radius = 2.125
+
+[node name="Elevator" type="Node3D"]
+script = ExtResource("1_wllg3")
+elevator_inside = ExtResource("2_lf2k1")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+billboard = 1
+text = "E"
+font_size = 128
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gjln1")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("SphereShape3D_wllg3")

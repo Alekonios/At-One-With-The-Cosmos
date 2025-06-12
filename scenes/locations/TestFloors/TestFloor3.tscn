@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bewn3ee6grvo6"]
+
+[ext_resource type="PackedScene" uid="uid://kajon6tgwqho" path="res://scenes/Entity/Player/Player.tscn" id="1_a3ngc"]
+[ext_resource type="PackedScene" uid="uid://ckx4nx8fn4ba2" path="res://scenes/Entity/elevator.tscn" id="2_a3ngc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pfyl8"]
+flip_faces = true
+size = Vector3(12, 0.1, 12)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a3ngc"]
+points = PackedVector3Array(6.09405, 0.235677, 6.09405, -6.09405, -0.145201, -6.09405, -6.09405, 0.235677, -6.09405, 6.09405, -0.145201, -6.09405, -6.09405, -0.145201, 6.09405, -6.09405, 0.235677, 6.09405, 6.09405, 0.235677, -6.09405, 6.09405, -0.145201, 6.09405)
+
+[node name="TestFloor3" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pfyl8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_a3ngc")
+
+[node name="Player" parent="." instance=ExtResource("1_a3ngc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -2)
+text = "FLOOR 3"
+font_size = 128
+
+[node name="Elevator" parent="." instance=ExtResource("2_a3ngc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73102, 2.90621)

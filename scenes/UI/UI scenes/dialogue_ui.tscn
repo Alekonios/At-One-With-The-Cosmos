@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://whtbbw6y12db"]
+[gd_scene load_steps=10 format=3 uid="uid://whtbbw6y12db"]
 
 [ext_resource type="Script" uid="uid://n51gsjc4hel1" path="res://scenes/UI/scripts/dialogue_ui.gd" id="1_hvt71"]
 
@@ -34,6 +34,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/Character Line:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_1vk7c"]
 resource_name = "slide_in"
@@ -63,10 +87,60 @@ tracks/1/keys = {
 "values": [Vector2(0, 200), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_cjoj5"]
+resource_name = "slide_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_8yl0t"]
+resource_name = "slide_reset"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5l00a"]
+resource_name = "text_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Character Line:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxtqs"]
 _data = {
 &"RESET": SubResource("Animation_vxtqs"),
-&"slide_in": SubResource("Animation_1vk7c")
+&"slide_in": SubResource("Animation_1vk7c"),
+&"slide_out": SubResource("Animation_cjoj5"),
+&"slide_reset": SubResource("Animation_8yl0t"),
+&"text_animation": SubResource("Animation_5l00a")
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -80,8 +154,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -1000.0
-offset_top = -200.0
 offset_right = 1000.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
@@ -90,6 +164,8 @@ size_flags_vertical = 0
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 200.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 100
@@ -116,6 +192,8 @@ text = "Placeholder Text."
 label_settings = SubResource("LabelSettings_lwquf")
 horizontal_alignment = 1
 vertical_alignment = 2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 visible = false

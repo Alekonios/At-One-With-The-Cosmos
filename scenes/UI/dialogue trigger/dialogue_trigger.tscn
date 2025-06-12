@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c11mcb5o3picb"]
+[gd_scene load_steps=3 format=3 uid="uid://c11mcb5o3picb"]
 
 [ext_resource type="Script" uid="uid://dfq0wbtiwpvlg" path="res://scenes/UI/dialogue trigger/dialogue_trigger.gd" id="1_n64sx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_isvy5"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_n64sx")
@@ -8,3 +10,15 @@ script = ExtResource("1_n64sx")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+shape = SubResource("BoxShape3D_isvy5")
+
+[node name="Label3D" type="Label3D" parent="."]
+pixel_size = 0.01
+billboard = 1
+modulate = Color(0.991322, 0.574219, 1.46317e-05, 1)
+text = "DIALOGUE TRIGGER"
+outline_size = 0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

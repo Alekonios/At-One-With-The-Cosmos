@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Levels" load_steps=2 format=3 uid="uid://yb3cr2j6cnci"]
+
+[ext_resource type="Script" uid="uid://0iktkj3wdawi" path="res://scenes/locations/levels.gd" id="1_oqanr"]
+
+[resource]
+script = ExtResource("1_oqanr")
+metadata/_custom_type_script = "uid://0iktkj3wdawi"

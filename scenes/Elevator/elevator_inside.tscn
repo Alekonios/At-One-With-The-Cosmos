@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=3 uid="uid://br2mb2d6w1xej"]
+
+[ext_resource type="Script" uid="uid://ct81sidlqsstm" path="res://scenes/Elevator/elevator_inside.gd" id="1_diii6"]
+
+[sub_resource type="Environment" id="Environment_rlekx"]
+background_mode = 1
+background_color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_diii6"]
+albedo_color = Color(0.76579, 0.743085, 0.752019, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rlekx"]
+material = SubResource("StandardMaterial3D_diii6")
+size = Vector3(3, 3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlekx"]
+albedo_color = Color(0.456464, 0.456464, 0.456464, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rlekx"]
+material = SubResource("StandardMaterial3D_rlekx")
+top_radius = 0.15
+bottom_radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilnmp"]
+albedo_color = Color(0.480133, 0.246002, 0.155245, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_khchb"]
+material = SubResource("StandardMaterial3D_ilnmp")
+top_radius = 0.15
+bottom_radius = 0.15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rlekx"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_diii6"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ilnmp"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ospjh"]
+albedo_color = Color(0.329143, 0.324609, 0.340597, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_diii6"]
+material = SubResource("StandardMaterial3D_ospjh")
+size = Vector3(8, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khchb"]
+albedo_color = Color(0.844205, 0.843965, 0.857764, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ospjh"]
+material = SubResource("StandardMaterial3D_khchb")
+size = Vector3(3, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_diii6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ilnmp"]
+size = Vector3(8, 4, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rlekx"]
+size = Vector2(10, 10)
+
+[node name="Elevator Inside" type="Node3D"]
+script = ExtResource("1_diii6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rlekx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.58739, 0, -0.809304, 0, 1, 0, 0.809304, 0, -0.58739, 6.74786, 0, -10.7736)
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.26081, 10.433, -4.17237)
+light_color = Color(0.915466, 0.846203, 0.799249, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 19.5197
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79914, -3.25119, -5.70246)
+light_energy = 12.356
+shadow_enabled = true
+spot_range = 9.145
+spot_angle = 26.01
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-0.120137, 0.0934267, -0.988351, 0, 0.995562, 0.0941083, 0.992757, 0.0113059, -0.119604, -4.89023, 0.558958, -4.1925)
+
+[node name="MapCamera" type="Camera3D" parent="."]
+transform = Transform3D(-0.965926, -5.75379e-08, -0.258819, -0.0365708, 0.989967, 0.136484, 0.256222, 0.141299, -0.956235, -1.60104, 2, -4.11888)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.919822, 0.0369222, -0.390596, 0, 0.995562, 0.0941083, 0.392337, 0.0865628, -0.915739, 0.951585, 0.558958, -4.1925)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -3.0598e-07, -1, 0, 7, -4.37114e-08, 0, 0, 0)
+debug_shape_custom_color = Color(0.497842, 1, 0.146159, 1)
+debug_shape_thickness = 1
+
+[node name="Plate" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65376, 0.380787, 0.824337)
+mesh = SubResource("BoxMesh_rlekx")
+skeleton = NodePath("../Door")
+
+[node name="Filler Button 1" type="MeshInstance3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.546972, 0.460402, 0.629267)
+mesh = SubResource("CylinderMesh_rlekx")
+
+[node name="Filler Buton 2" type="MeshInstance3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.546971, 0.0359054, 0.629267)
+mesh = SubResource("CylinderMesh_rlekx")
+
+[node name="Filler Button 3" type="MeshInstance3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.546971, -0.381132, 0.629267)
+mesh = SubResource("CylinderMesh_rlekx")
+
+[node name="Button 1" type="MeshInstance3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.546971, -0.805584, 0.629267)
+mesh = SubResource("CylinderMesh_khchb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plate/Button 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, -1.0764, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plate/Button 1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0013648, 0.13837, 0)
+shape = SubResource("SphereShape3D_rlekx")
+
+[node name="Button 2" type="MeshInstance3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.546971, 0.444226, 0.014534)
+mesh = SubResource("CylinderMesh_khchb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plate/Button 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plate/Button 2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000605166, -0.933932, 0)
+shape = SubResource("SphereShape3D_diii6")
+
+[node name="Button 3" type="MeshInstance3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.546971, 0.0494367, 0.014534)
+mesh = SubResource("CylinderMesh_khchb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plate/Button 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.418079, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plate/Button 3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00523525, -0.506933, 0)
+shape = SubResource("SphereShape3D_ilnmp")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_diii6")
+
+[node name="Map" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(0.999584, 0.0288463, 0, -0.0288463, 0.999584, 0, 0, 0, 1, -1.6184, 1.48224, -0.0935798)
+mesh = SubResource("BoxMesh_ospjh")
+skeleton = NodePath("../Holder")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall/Map"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/Map/StaticBody3D"]
+transform = Transform3D(3.2, 0, 0, 7.45058e-09, 5.2, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_diii6")
+
+[node name="Holder" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.50642, -0.482221)
+mesh = SubResource("BoxMesh_ilnmp")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -4)
+mesh = SubResource("BoxMesh_diii6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -4)
+mesh = SubResource("PlaneMesh_rlekx")

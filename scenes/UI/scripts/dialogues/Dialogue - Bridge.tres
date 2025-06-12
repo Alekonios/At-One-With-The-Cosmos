@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://dpo30v5eigxb2"]
+
+[ext_resource type="Script" uid="uid://dpafn0jqm1arx" path="res://scenes/UI/scripts/dialogues/dialogue_resource.gd" id="1_3h1cj"]
+
+[resource]
+script = ExtResource("1_3h1cj")
+speaker_name = "player - bridge"
+speaker_lines = Array[String](["BRIDGE DIALOGUE PLACEHOLDER"])
+metadata/_custom_type_script = "uid://dpafn0jqm1arx"
