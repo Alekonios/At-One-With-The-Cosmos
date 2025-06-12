@@ -27,10 +27,12 @@ var camera_velocity_y := 0.0
 var panel_view_enabled: bool = false
 var map_view_enabled: bool = false
 var viewing_full_map: bool = false
+var transitioning: bool = false
 
 var close_up_view_enabeled: bool = false
 var close_up_view: bool = false
 var step_back: bool = false
+
 
 func _ready() -> void:
 	initial_camera_pos = camera.position
@@ -46,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	ray.target_position = ray.to_local(ray_origin + direction)
 
 	handle_boutons()
+	
 	control_camera(delta)
 	if map_view_enabled == true:
 		update_camera_to_map_view(delta)
@@ -55,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	
 	if close_up_view_enabeled == true:
 		update_camera_to_map_close_up(delta)
-	if Input.is_action_just_pressed("Escape"):
+	if Input.is_action_just_pressed("Escape") and transitioning == false:
 		close_up_view_enabeled = false
 		close_up_view = false
 		step_back = true
@@ -63,7 +66,6 @@ func _physics_process(delta: float) -> void:
 	if panel_view_enabled == true:
 		update_camera_to_panel_view(delta)
 
-	print(camera_velocity_y) 
 
 func handle_boutons():
 	#maybe I can use MATCH ?
@@ -92,11 +94,15 @@ func handle_boutons():
 
 			if viewing_full_map == true:
 				if Input.is_action_just_pressed("Interact"):
-					close_up_view_enabeled = true
+					if transitioning == false:
+						close_up_view_enabeled = true
+					else:
+						close_up_view_enabeled = false
+						transitioning = false
 
 		if parent.name.begins_with("Panel"):
 			if map_view_enabled == false:
-				if Input.is_action_just_pressed("Interact"):
+				if Input.is_action_just_pressed("Interact") and transitioning != true:
 					panel_view_enabled = true
 
 func control_camera(delta):
@@ -109,12 +115,15 @@ func control_camera(delta):
 		var max_y := 3.48
 
 
-		if Input.is_action_pressed("MoveUp"):
-			camera_velocity_y += speed * delta
-		elif Input.is_action_pressed("MoveDown"):
-			camera_velocity_y -= speed * delta
-		else:
-			camera_velocity_y = lerp(camera_velocity_y, 0.0, friction * delta)
+		if transitioning == true:
+			camera_velocity_y = 0.0
+		if transitioning == false:
+			if Input.is_action_pressed("MoveUp"):
+				camera_velocity_y += speed * delta
+			elif Input.is_action_pressed("MoveDown"):
+				camera_velocity_y -= speed * delta
+			else:
+				camera_velocity_y = lerp(camera_velocity_y, 0.0, friction * delta)
 
 		camera.position.y += camera_velocity_y * delta
 		camera.position.y = clamp(camera.position.y, min_y -1, max_y +1)
@@ -129,6 +138,7 @@ func control_camera(delta):
 			camera_velocity_y = lerp(camera_velocity_y, 0.2, 12 * delta)
 
 func update_camera_to_map_view(delta):
+	transitioning = true
 	camera.position = camera.position.lerp(map_camera.position, 4 * delta) #?
 	camera.rotation = lerp(camera.rotation, map_camera.rotation, 4 * delta)
 	camera.fov = lerp(camera.fov, map_camera.fov, 1 * delta)
@@ -137,8 +147,11 @@ func update_camera_to_map_view(delta):
 		map_view_enabled = false
 		viewing_full_map = true
 		step_back = false
+		
+		transitioning = false
 
 func update_camera_to_map_close_up(delta):
+	transitioning = true
 	camera.position = lerp(camera.position, close_up_camera.position, 4 * delta)
 	camera.rotation = lerp(camera.rotation, close_up_camera.rotation, 4 * delta)
 	camera.fov = lerp(camera.fov, close_up_camera.fov, 1 * delta)
@@ -146,8 +159,11 @@ func update_camera_to_map_close_up(delta):
 		camera.rotation.distance_to(close_up_camera.rotation) < 0.01:
 		close_up_view_enabeled = false
 		close_up_view = true
+		
+		transitioning = false
 
 func update_camera_to_panel_view(delta):
+	transitioning = true
 	camera.position = lerp(camera.position, initial_camera_pos, 4 * delta)
 	camera.rotation = lerp(camera.rotation, initial_camera_rotation, 4 * delta)
 	camera.fov = lerp(camera.fov, initial_camera_fov, 1 * delta)
@@ -155,8 +171,11 @@ func update_camera_to_panel_view(delta):
 		camera.rotation.distance_to(initial_camera_rotation) < 0.01:
 		panel_view_enabled = false
 		viewing_full_map = false
+		
+		transitioning = false
 
 func debug():
+	print(transitioning)
 	camera_2.current = true
 	print(ray.target_position)
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
